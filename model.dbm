@@ -1,0 +1,950 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+CAUTION: Do not modify this file unless you know what you are doing.
+         Unexpected results may occur if the code is changed deliberately.
+-->
+<dbmodel>
+<role name="SAG_usu_alumno"
+      inherit="true"
+      login="true"
+      encrypted="true"
+      password="md581773759d752b438ad031080a436f941">
+</role>
+
+<role name="usuario"
+      superuser="true"
+      validity="1969-12-31 00:00:00"
+      password="md541f55d102ea5687e95fb361019a12da4">
+</role>
+
+<schema name="public" protected="true" rect-visible="true" fill-color="#e1e1e1" sql-disabled="true">
+</schema>
+
+<database name="db_SAG" encoding="UTF8" lc-collate="Spanish_Peru" lc-ctype="Spanish_Peru">
+	<role name="postgres"/>
+	<tablespace name="pg_default"/>
+</database>
+
+<sequence name="tb_local_tb_local_id_seq"
+	 start="1" increment="1"
+	 min-value="1" max-value="9223372036854775807"
+	 cache="1" cycle="false">
+	<schema name="public"/>
+	<role name="postgres"/>
+</sequence>
+
+<table name="tb_local">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="813.333" y="160"/>
+	<column name="tb_local_id" not-null="true" default-value="nextval('tb_local_tb_local_id_seq'::regclass)">
+		<type name="integer"/>
+	</column>
+	<column name="tb_local_nom" not-null="true">
+		<type name="character varying" length="50"/>
+	</column>
+	<column name="tb_local_tel">
+		<type name="character varying" length="10"/>
+	</column>
+	<column name="tb_local_dir" not-null="true">
+		<type name="character varying"/>
+	</column>
+	<column name="tb_local_est" not-null="true" default-value="'H'::bpchar">
+		<type name="character"/>
+	</column>
+	<constraint name="pk_local_id" type="pk-constr" factor="100" table="public.tb_local">
+		<columns names="tb_local_id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<sequence name="tb_tipousuario_tb_tipousuario_id_seq"
+	 start="1" increment="1"
+	 min-value="1" max-value="9223372036854775807"
+	 cache="1" cycle="false">
+	<schema name="public"/>
+	<role name="postgres"/>
+</sequence>
+
+<table name="tb_tipousuario">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="381" y="50"/>
+	<column name="tb_tipousuario_id" not-null="true" default-value="nextval('tb_tipousuario_tb_tipousuario_id_seq'::regclass)">
+		<type name="integer"/>
+	</column>
+	<column name="tb_tipousuario_nom" not-null="true">
+		<type name="character varying" length="30"/>
+	</column>
+	<column name="tb_tipousuario_est" not-null="true" default-value="'H'::bpchar">
+		<type name="character"/>
+	</column>
+	<constraint name="pk_tipousuario_id" type="pk-constr" factor="100" table="public.tb_tipousuario">
+		<columns names="tb_tipousuario_id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<sequence name="tb_opcionmenu_tb_opcionmenu_id_seq"
+	 start="1" increment="1"
+	 min-value="1" max-value="9223372036854775807"
+	 cache="1" cycle="false">
+	<schema name="public"/>
+	<role name="postgres"/>
+</sequence>
+
+<table name="tb_opcionmenu">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="1267" y="41.6667"/>
+	<column name="tb_opcionmenu_id" not-null="true" default-value="nextval('tb_opcionmenu_tb_opcionmenu_id_seq'::regclass)">
+		<type name="integer"/>
+	</column>
+	<column name="tb_opcionmenu_nom" not-null="true">
+		<type name="character varying" length="50"/>
+	</column>
+	<column name="tb_opcionmenu_lin" not-null="true">
+		<type name="character varying" length="100"/>
+	</column>
+	<column name="tb_opcionmenu_id_ref">
+		<type name="integer"/>
+	</column>
+	<column name="tb_opcionmenu_est" not-null="true" default-value="'H'::bpchar">
+		<type name="character"/>
+	</column>
+	<constraint name="pk_opcionmenu_id" type="pk-constr" factor="100" table="public.tb_opcionmenu">
+		<columns names="tb_opcionmenu_id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<sequence name="tb_acceso_tb_acceso_id_seq"
+	 start="1" increment="1"
+	 min-value="1" max-value="9223372036854775807"
+	 cache="1" cycle="false">
+	<schema name="public"/>
+	<role name="postgres"/>
+</sequence>
+
+<table name="tb_acceso">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="807.333" y="38.3333"/>
+	<column name="tb_acceso_id" not-null="true" default-value="nextval('tb_acceso_tb_acceso_id_seq'::regclass)">
+		<type name="integer"/>
+	</column>
+	<column name="tb_acceso_est" not-null="true" default-value="'H'::bpchar">
+		<type name="character"/>
+	</column>
+	<column name="tb_opcionmenu_id">
+		<type name="integer"/>
+	</column>
+	<column name="tb_tipousuario_id">
+		<type name="integer"/>
+	</column>
+	<constraint name="pk_acceso_id" type="pk-constr" factor="100" table="public.tb_acceso">
+		<columns names="tb_acceso_id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<sequence name="tb_usuario_tb_usuario_id_seq"
+	 start="1" increment="1"
+	 min-value="1" max-value="9223372036854775807"
+	 cache="1" cycle="false">
+	<schema name="public"/>
+	<role name="postgres"/>
+</sequence>
+
+<table name="tb_usuario">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="400.333" y="286.667"/>
+	<column name="tb_usuario_id" not-null="true" default-value="nextval('tb_usuario_tb_usuario_id_seq'::regclass)">
+		<type name="integer"/>
+	</column>
+	<column name="tb_usuario_nic" not-null="true">
+		<type name="character varying" length="50"/>
+	</column>
+	<column name="tb_usuario_pas" not-null="true">
+		<type name="character varying" length="50"/>
+	</column>
+	<column name="tb_usuario_ult_acc">
+		<type name="timestamp"/>
+	</column>
+	<column name="tb_usuario_est_cnx">
+		<type name="character"/>
+	</column>
+	<column name="tb_usuario_est" not-null="true" default-value="'H'::bpchar">
+		<type name="character"/>
+	</column>
+	<column name="tb_tipousuario_id">
+		<type name="integer"/>
+	</column>
+	<column name="tb_local_id">
+		<type name="integer"/>
+	</column>
+	<constraint name="pk_usuario_id" type="pk-constr" factor="100" table="public.tb_usuario">
+		<columns names="tb_usuario_id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<sequence name="tb_bitacora_tb_bitacora_id_seq"
+	 start="1" increment="1"
+	 min-value="1" max-value="9223372036854775807"
+	 cache="1" cycle="false">
+	<schema name="public"/>
+	<role name="postgres"/>
+</sequence>
+
+<table name="tb_bitacora">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="11.6667" y="74.4"/>
+	<column name="tb_bitacora_id" not-null="true" default-value="nextval('tb_bitacora_tb_bitacora_id_seq'::regclass)">
+		<type name="integer"/>
+	</column>
+	<column name="tb_bitacora_acc" not-null="true">
+		<type name="character"/>
+	</column>
+	<column name="tb_bitacora_fec" not-null="true">
+		<type name="timestamp"/>
+	</column>
+	<column name="tb_bitacora_ip_ses" not-null="true">
+		<type name="character varying" length="100"/>
+	</column>
+	<column name="tb_bitacora_id_reg" not-null="true">
+		<type name="integer"/>
+	</column>
+	<column name="tb_bitacora_tab" not-null="true">
+		<type name="character varying" length="50"/>
+	</column>
+	<column name="tb_bitacora_mod" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="tb_usuario_id">
+		<type name="integer"/>
+	</column>
+	<constraint name="pk_bitacora_id" type="pk-constr" factor="100" table="public.tb_bitacora">
+		<columns names="tb_bitacora_id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<sequence name="tb_grupo_tb_grupo_id_seq"
+	 start="1" increment="1"
+	 min-value="1" max-value="9223372036854775807"
+	 cache="1" cycle="false">
+	<schema name="public"/>
+	<role name="postgres"/>
+</sequence>
+
+<table name="tb_grupo">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="1363" y="502.733"/>
+	<column name="tb_grupo_id" not-null="true" default-value="nextval('tb_grupo_tb_grupo_id_seq'::regclass)">
+		<type name="integer"/>
+	</column>
+	<column name="tb_grupo_nom" not-null="true">
+		<type name="character varying" length="50"/>
+	</column>
+	<column name="tb_grupo_abr">
+		<type name="character varying" length="3"/>
+	</column>
+	<constraint name="pk_grupo_id" type="pk-constr" factor="100" table="public.tb_grupo">
+		<columns names="tb_grupo_id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<sequence name="tb_escuela_tb_escuela_id_seq"
+	 start="1" increment="1"
+	 min-value="1" max-value="9223372036854775807"
+	 cache="1" cycle="false">
+	<schema name="public"/>
+	<role name="postgres"/>
+</sequence>
+
+<table name="tb_escuela">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="1685" y="636.067"/>
+	<column name="tb_escuela_id" not-null="true" default-value="nextval('tb_escuela_tb_escuela_id_seq'::regclass)">
+		<type name="integer"/>
+	</column>
+	<column name="tb_escuela_nom" not-null="true">
+		<type name="character varying" length="80"/>
+	</column>
+	<column name="tb_grupo_id" not-null="true">
+		<type name="integer"/>
+	</column>
+	<constraint name="pk_escuela_id" type="pk-constr" factor="100" table="public.tb_escuela">
+		<columns names="tb_escuela_id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<sequence name="tb_aula_tb_aula_id_seq"
+	 start="1" increment="1"
+	 min-value="1" max-value="9223372036854775807"
+	 cache="1" cycle="false">
+	<schema name="public"/>
+	<role name="postgres"/>
+</sequence>
+
+<table name="tb_aula">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="1234.67" y="191.067"/>
+	<column name="tb_aula_id" not-null="true" default-value="nextval('tb_aula_tb_aula_id_seq'::regclass)">
+		<type name="integer"/>
+	</column>
+	<column name="tb_aula_nom" not-null="true">
+		<type name="character varying" length="20"/>
+	</column>
+	<column name="tb_aula_cap_alu" not-null="true">
+		<type name="integer"/>
+	</column>
+	<column name="tb_local_id" not-null="true">
+		<type name="integer"/>
+	</column>
+	<constraint name="pk_aula" type="pk-constr" factor="100" table="public.tb_aula">
+		<columns names="tb_aula_id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="tb_ciclo">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="795.333" y="824.4"/>
+	<column name="tb_ciclo_cod" not-null="true">
+		<type name="character varying" length="10"/>
+	</column>
+	<column name="tb_ciclo_fec_ini" not-null="true">
+		<type name="date"/>
+	</column>
+	<column name="tb_ciclo_fec_fin" not-null="true">
+		<type name="date"/>
+	</column>
+	<column name="tb_ciclo_pre_bas" not-null="true">
+		<type name="numeric" length="12" precision="2"/>
+	</column>
+	<constraint name="pk_ciclo_cod" type="pk-constr" factor="100" table="public.tb_ciclo">
+		<columns names="tb_ciclo_cod" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<sequence name="tb_turno_tb_turno_id_seq"
+	 start="1" increment="1"
+	 min-value="1" max-value="9223372036854775807"
+	 cache="1" cycle="false">
+	<schema name="public"/>
+	<role name="postgres"/>
+</sequence>
+
+<table name="tb_turno">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="1710" y="23.7999"/>
+	<column name="tb_turno_id" not-null="true" default-value="nextval('tb_turno_tb_turno_id_seq'::regclass)">
+		<type name="integer"/>
+	</column>
+	<column name="tb_turno_nom" not-null="true">
+		<type name="character varying"/>
+	</column>
+	<column name="tb_turno_hor_ini" not-null="true">
+		<type name="time"/>
+	</column>
+	<column name="tb_turno_hor_fin" not-null="true">
+		<type name="time"/>
+	</column>
+	<constraint name="pk_turno_id" type="pk-constr" factor="100" table="public.tb_turno">
+		<columns names="tb_turno_id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<sequence name="tb_nivel_tb_nivel_id_seq"
+	 start="1" increment="1"
+	 min-value="1" max-value="9223372036854775807"
+	 cache="1" cycle="false">
+	<schema name="public"/>
+	<role name="postgres"/>
+</sequence>
+
+<table name="tb_nivel">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="1711" y="483.8"/>
+	<column name="tb_nivel_id" not-null="true" default-value="nextval('tb_nivel_tb_nivel_id_seq'::regclass)">
+		<type name="integer"/>
+	</column>
+	<column name="tb_nivel_nom" not-null="true">
+		<type name="character varying" length="30"/>
+	</column>
+	<column name="tb_nivel_pos" not-null="true">
+		<type name="integer"/>
+	</column>
+	<constraint name="pk_tb_nivel_id" type="pk-constr" factor="100" table="public.tb_nivel">
+		<columns names="tb_nivel_id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<sequence name="tb_aulaturno_tb_aulaturno_id_seq"
+	 start="1" increment="1"
+	 min-value="1" max-value="9223372036854775807"
+	 cache="1" cycle="false">
+	<schema name="public"/>
+	<role name="postgres"/>
+</sequence>
+
+<table name="tb_aulaturno">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="1777" y="238.8"/>
+	<column name="tb_aulaturno_id" not-null="true" default-value="nextval('tb_aulaturno_tb_aulaturno_id_seq'::regclass)">
+		<type name="integer"/>
+	</column>
+	<column name="tb_aula_id" not-null="true">
+		<type name="integer"/>
+	</column>
+	<column name="tb_turno_id" not-null="true">
+		<type name="integer"/>
+	</column>
+	<column name="tb_nivel_id" not-null="true">
+		<type name="integer"/>
+	</column>
+	<column name="tb_grupo_id" not-null="true">
+		<type name="integer"/>
+	</column>
+	<constraint name="pk_aulaturno_id" type="pk-constr" factor="100" table="public.tb_aulaturno">
+		<columns names="tb_aulaturno_id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="tb_alumno">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="0" y="303.8"/>
+	<column name="tb_alumno_cod" not-null="true">
+		<type name="character" length="5"/>
+	</column>
+	<column name="tb_alumno_sex" not-null="true">
+		<type name="character varying"/>
+	</column>
+	<column name="tb_alumno_ape_pat" not-null="true">
+		<type name="character varying" length="50"/>
+	</column>
+	<column name="tb_alumno_ape_mat" not-null="true">
+		<type name="character varying" length="50"/>
+	</column>
+	<column name="tb_alumno_nom" not-null="true">
+		<type name="character varying" length="50"/>
+	</column>
+	<column name="tb_alumno_dir" not-null="true">
+		<type name="character varying" length="200"/>
+	</column>
+	<column name="tb_alumno_tel">
+		<type name="character varying" length="50"/>
+	</column>
+	<column name="tb_alumno_rut_fot" not-null="true">
+		<type name="character varying" length="200"/>
+	</column>
+	<column name="tb_alumno_ema">
+		<type name="character varying" length="50"/>
+	</column>
+	<column name="tb_alumno_dni" not-null="true">
+		<type name="character" length="8"/>
+	</column>
+	<column name="tb_alumno_est">
+		<type name="character varying"/>
+	</column>
+	<column name="tb_alumno_fec_reg" not-null="true">
+		<type name="date"/>
+	</column>
+	<constraint name="pk_alumno_cod" type="pk-constr" factor="100" table="public.tb_alumno">
+		<columns names="tb_alumno_cod" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<sequence name="tb_observacion_tb_observacion_id_seq"
+	 start="1" increment="1"
+	 min-value="1" max-value="9223372036854775807"
+	 cache="1" cycle="false">
+	<schema name="public"/>
+	<role name="postgres"/>
+</sequence>
+
+<table name="tb_observacion">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="12.9998" y="817.133"/>
+	<column name="tb_observacion_id" not-null="true" default-value="nextval('tb_observacion_tb_observacion_id_seq'::regclass)">
+		<type name="integer"/>
+	</column>
+	<column name="tb_obervacion_des" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="tb_alumno_cod" not-null="true">
+		<type name="character" length="5"/>
+	</column>
+	<column name="tb_ciclo_cod" not-null="true">
+		<type name="character varying" length="10"/>
+	</column>
+	<constraint name="pk_observacion_id" type="pk-constr" factor="100" table="public.tb_observacion">
+		<columns names="tb_observacion_id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<sequence name="tb_matricula_tb_matricula_id_seq"
+	 start="1" increment="1"
+	 min-value="1" max-value="9223372036854775807"
+	 cache="1" cycle="false">
+	<schema name="public"/>
+	<role name="postgres"/>
+</sequence>
+
+<table name="tb_matricula">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="680" y="476.533"/>
+	<column name="tb_matricula_id" not-null="true" default-value="nextval('tb_matricula_tb_matricula_id_seq'::regclass)">
+		<type name="integer"/>
+	</column>
+	<column name="tb_matricula_fec" not-null="true">
+		<type name="date"/>
+	</column>
+	<column name="tb_matricula_mon" not-null="true">
+		<type name="numeric" length="5" precision="2"/>
+	</column>
+	<column name="tb_matricula_est_pag" not-null="true">
+		<type name="character"/>
+	</column>
+	<column name="tb_ciclo_cod" not-null="true">
+		<type name="character varying" length="10"/>
+	</column>
+	<column name="tb_alumno_cod" not-null="true">
+		<type name="character" length="5"/>
+	</column>
+	<column name="tb_local_id" not-null="true">
+		<type name="integer"/>
+	</column>
+	<constraint name="pk_tb_matricula_id" type="pk-constr" factor="100" table="public.tb_matricula">
+		<columns names="tb_matricula_id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<sequence name="tb_pago_tb_pago_id_seq"
+	 start="1" increment="1"
+	 min-value="1" max-value="9223372036854775807"
+	 cache="1" cycle="false">
+	<schema name="public"/>
+	<role name="postgres"/>
+</sequence>
+
+<table name="tb_pago">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="237.667" y="591.533"/>
+	<column name="tb_pago_id" not-null="true" default-value="nextval('tb_pago_tb_pago_id_seq'::regclass)">
+		<type name="integer"/>
+	</column>
+	<column name="tb_pago_mon" not-null="true">
+		<type name="numeric" length="6" precision="3"/>
+	</column>
+	<column name="tb_pago_fec" not-null="true">
+		<type name="date"/>
+	</column>
+	<column name="tb_pago_est" not-null="true">
+		<type name="character"/>
+	</column>
+	<column name="tb_pago_tip" not-null="true">
+		<type name="character"/>
+	</column>
+	<column name="tb_matricula_id" not-null="true">
+		<type name="integer"/>
+	</column>
+	<constraint name="pk_tb_pago_id" type="pk-constr" factor="100" table="public.tb_pago">
+		<columns names="tb_pago_id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<sequence name="tb_asistencia_tb_asistencia_id_seq"
+	 start="1" increment="1"
+	 min-value="1" max-value="9223372036854775807"
+	 cache="1" cycle="false">
+	<schema name="public"/>
+	<role name="postgres"/>
+</sequence>
+
+<table name="tb_asistencia">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="507.667" y="736.533"/>
+	<column name="tb_asistencia_id" not-null="true" default-value="nextval('tb_asistencia_tb_asistencia_id_seq'::regclass)">
+		<type name="integer"/>
+	</column>
+	<column name="tb_asistencia_fec" not-null="true">
+		<type name="date"/>
+	</column>
+	<column name="tb_asistencia_hor" not-null="true">
+		<type name="time"/>
+	</column>
+	<column name="tb_matricula_id" not-null="true">
+		<type name="integer"/>
+	</column>
+	<constraint name="pk_asistencia_id" type="pk-constr" factor="100" table="public.tb_asistencia">
+		<columns names="tb_asistencia_id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<sequence name="tb_simulacro_tb_simulacro_id_seq"
+	 start="1" increment="1"
+	 min-value="1" max-value="9223372036854775807"
+	 cache="1" cycle="false">
+	<schema name="public"/>
+	<role name="postgres"/>
+</sequence>
+
+<table name="tb_simulacro">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="1052" y="629.867"/>
+	<column name="tb_simulacro_id" not-null="true" default-value="nextval('tb_simulacro_tb_simulacro_id_seq'::regclass)">
+		<type name="integer"/>
+	</column>
+	<column name="tb_simulacro_rut_sim" not-null="true">
+		<type name="character varying" length="200"/>
+	</column>
+	<column name="tb_simulacro_fec" not-null="true">
+		<type name="date"/>
+	</column>
+	<column name="tb_ciclo_cod" not-null="true">
+		<type name="character varying" length="10"/>
+	</column>
+	<constraint name="pk_simulacro_id" type="pk-constr" factor="100" table="public.tb_simulacro">
+		<columns names="tb_simulacro_id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<sequence name="tb_historialalumno_tb_historialalumno_id_seq"
+	 start="1" increment="1"
+	 min-value="1" max-value="9223372036854775807"
+	 cache="1" cycle="false">
+	<schema name="public"/>
+	<role name="postgres"/>
+</sequence>
+
+<table name="tb_historialalumno">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="1170.67" y="339.867"/>
+	<column name="tb_historialalumno_id" not-null="true" default-value="nextval('tb_historialalumno_tb_historialalumno_id_seq'::regclass)">
+		<type name="integer"/>
+	</column>
+	<column name="tb_historialalumno_pun_sim" not-null="true">
+		<type name="numeric" length="6" precision="3"/>
+	</column>
+	<column name="tb_historialalumno_est" not-null="true">
+		<type name="character"/>
+	</column>
+	<column name="tb_matricula_id" not-null="true">
+		<type name="integer"/>
+	</column>
+	<column name="tb_simulacro_id" not-null="true">
+		<type name="integer"/>
+	</column>
+	<column name="tb_aulaturno_id" not-null="true">
+		<type name="integer"/>
+	</column>
+	<constraint name="pk_historialalumno_id" type="pk-constr" factor="100" table="public.tb_historialalumno">
+		<columns names="tb_historialalumno_id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<sequence name="tb_resultadoexamen_tb_resultadoexamen_id_seq"
+	 start="1" increment="1"
+	 min-value="1" max-value="9223372036854775807"
+	 cache="1" cycle="false">
+	<schema name="public"/>
+	<role name="postgres"/>
+</sequence>
+
+<table name="tb_resultadoexamen">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="1390" y="799.267"/>
+	<column name="tb_resultadoexamen_id" not-null="true" default-value="nextval('tb_resultadoexamen_tb_resultadoexamen_id_seq'::regclass)">
+		<type name="integer"/>
+	</column>
+	<column name="tb_resultadoexamen_pun_min" not-null="true">
+		<type name="numeric" length="6" precision="3"/>
+	</column>
+	<column name="tb_resultadoexamen_pun_max" not-null="true">
+		<type name="numeric" length="6" precision="3"/>
+	</column>
+	<column name="tb_escuela_id" not-null="true">
+		<type name="integer"/>
+	</column>
+	<column name="tb_ciclo_cod" not-null="true">
+		<type name="character varying" length="10"/>
+	</column>
+	<constraint name="pk_resultadoexamen_id" type="pk-constr" factor="100" table="public.tb_resultadoexamen">
+		<columns names="tb_resultadoexamen_id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<constraint name="fk_opcionmenu_opcionmenu" type="fk-constr"	 comparison-type="MATCH FULL"
+	 upd-action="CASCADE" del-action="SET NULL" ref-table="public.tb_opcionmenu" table="public.tb_opcionmenu">
+	<columns names="tb_opcionmenu_id_ref" ref-type="src-columns"/>
+	<columns names="tb_opcionmenu_id" ref-type="dst-columns"/>
+</constraint>
+<constraint name="tb_opcionmenu_fk" type="fk-constr"	 comparison-type="MATCH FULL"
+	 upd-action="CASCADE" del-action="SET NULL" ref-table="public.tb_opcionmenu" table="public.tb_acceso">
+	<columns names="tb_opcionmenu_id" ref-type="src-columns"/>
+	<columns names="tb_opcionmenu_id" ref-type="dst-columns"/>
+</constraint>
+<constraint name="tb_tipousuario_fk" type="fk-constr"	 comparison-type="MATCH FULL"
+	 upd-action="CASCADE" del-action="SET NULL" ref-table="public.tb_tipousuario" table="public.tb_acceso">
+	<columns names="tb_tipousuario_id" ref-type="src-columns"/>
+	<columns names="tb_tipousuario_id" ref-type="dst-columns"/>
+</constraint>
+<constraint name="fk_usuario_tipousuario" type="fk-constr"	 comparison-type="MATCH FULL"
+	 upd-action="CASCADE" del-action="SET NULL" ref-table="public.tb_tipousuario" table="public.tb_usuario">
+	<columns names="tb_tipousuario_id" ref-type="src-columns"/>
+	<columns names="tb_tipousuario_id" ref-type="dst-columns"/>
+</constraint>
+<constraint name="fk_usuario_local" type="fk-constr"	 comparison-type="MATCH FULL"
+	 upd-action="CASCADE" del-action="SET NULL" ref-table="public.tb_local" table="public.tb_usuario">
+	<columns names="tb_local_id" ref-type="src-columns"/>
+	<columns names="tb_local_id" ref-type="dst-columns"/>
+</constraint>
+<constraint name="fk_bitacora_usuario" type="fk-constr"	 comparison-type="MATCH FULL"
+	 upd-action="CASCADE" del-action="SET NULL" ref-table="public.tb_usuario" table="public.tb_bitacora">
+	<columns names="tb_usuario_id" ref-type="src-columns"/>
+	<columns names="tb_usuario_id" ref-type="dst-columns"/>
+</constraint>
+<constraint name="fk_escuela_grupo" type="fk-constr"	 comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.tb_grupo" table="public.tb_escuela">
+	<columns names="tb_grupo_id" ref-type="src-columns"/>
+	<columns names="tb_grupo_id" ref-type="dst-columns"/>
+</constraint>
+<constraint name="fk_aula_local" type="fk-constr"	 comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.tb_local" table="public.tb_aula">
+	<columns names="tb_local_id" ref-type="src-columns"/>
+	<columns names="tb_local_id" ref-type="dst-columns"/>
+</constraint>
+<constraint name="fk_aulaturno_turno" type="fk-constr"	 comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.tb_turno" table="public.tb_aulaturno">
+	<columns names="tb_turno_id" ref-type="src-columns"/>
+	<columns names="tb_turno_id" ref-type="dst-columns"/>
+</constraint>
+<constraint name="fk_aulaturno_aula" type="fk-constr"	 comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.tb_aula" table="public.tb_aulaturno">
+	<columns names="tb_aula_id" ref-type="src-columns"/>
+	<columns names="tb_aula_id" ref-type="dst-columns"/>
+</constraint>
+<constraint name="fk_aulaturno_nivel" type="fk-constr"	 comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.tb_nivel" table="public.tb_aulaturno">
+	<columns names="tb_nivel_id" ref-type="src-columns"/>
+	<columns names="tb_nivel_id" ref-type="dst-columns"/>
+</constraint>
+<constraint name="fk_aulaturno_grupo" type="fk-constr"	 comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.tb_grupo" table="public.tb_aulaturno">
+	<columns names="tb_grupo_id" ref-type="src-columns"/>
+	<columns names="tb_grupo_id" ref-type="dst-columns"/>
+</constraint>
+<constraint name="fk_observacion_alumno" type="fk-constr"	 comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.tb_alumno" table="public.tb_observacion">
+	<columns names="tb_alumno_cod" ref-type="src-columns"/>
+	<columns names="tb_alumno_cod" ref-type="dst-columns"/>
+</constraint>
+<constraint name="fk_observacion_ciclo" type="fk-constr"	 comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.tb_ciclo" table="public.tb_observacion">
+	<columns names="tb_ciclo_cod" ref-type="src-columns"/>
+	<columns names="tb_ciclo_cod" ref-type="dst-columns"/>
+</constraint>
+<constraint name="fk_matricula_ciclo" type="fk-constr"	 comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.tb_ciclo" table="public.tb_matricula">
+	<columns names="tb_ciclo_cod" ref-type="src-columns"/>
+	<columns names="tb_ciclo_cod" ref-type="dst-columns"/>
+</constraint>
+<constraint name="fk_matricula_alumno" type="fk-constr"	 comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.tb_alumno" table="public.tb_matricula">
+	<columns names="tb_alumno_cod" ref-type="src-columns"/>
+	<columns names="tb_alumno_cod" ref-type="dst-columns"/>
+</constraint>
+<constraint name="fk_matricula_local" type="fk-constr"	 comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.tb_local" table="public.tb_matricula">
+	<columns names="tb_local_id" ref-type="src-columns"/>
+	<columns names="tb_local_id" ref-type="dst-columns"/>
+</constraint>
+<constraint name="fk_pago_matricula" type="fk-constr"	 comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.tb_matricula" table="public.tb_pago">
+	<columns names="tb_matricula_id" ref-type="src-columns"/>
+	<columns names="tb_matricula_id" ref-type="dst-columns"/>
+</constraint>
+<constraint name="fk_asistencia_matricula" type="fk-constr"	 comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.tb_matricula" table="public.tb_asistencia">
+	<columns names="tb_matricula_id" ref-type="src-columns"/>
+	<columns names="tb_matricula_id" ref-type="dst-columns"/>
+</constraint>
+<constraint name="fk_simulacro_ciclo" type="fk-constr"	 comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.tb_ciclo" table="public.tb_simulacro">
+	<columns names="tb_ciclo_cod" ref-type="src-columns"/>
+	<columns names="tb_ciclo_cod" ref-type="dst-columns"/>
+</constraint>
+<constraint name="fk_historialalumno_matricula" type="fk-constr"	 comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.tb_matricula" table="public.tb_historialalumno">
+	<columns names="tb_matricula_id" ref-type="src-columns"/>
+	<columns names="tb_matricula_id" ref-type="dst-columns"/>
+</constraint>
+<constraint name="fk_historialalumno_simulacro" type="fk-constr"	 comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.tb_simulacro" table="public.tb_historialalumno">
+	<columns names="tb_simulacro_id" ref-type="src-columns"/>
+	<columns names="tb_simulacro_id" ref-type="dst-columns"/>
+</constraint>
+<constraint name="fk_historialalumno_aulaturno" type="fk-constr"	 comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.tb_aulaturno" table="public.tb_historialalumno">
+	<columns names="tb_aulaturno_id" ref-type="src-columns"/>
+	<columns names="tb_aulaturno_id" ref-type="dst-columns"/>
+</constraint>
+<constraint name="fk_resultadoexamen_escuela" type="fk-constr"	 comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.tb_escuela" table="public.tb_resultadoexamen">
+	<columns names="tb_escuela_id" ref-type="src-columns"/>
+	<columns names="tb_escuela_id" ref-type="dst-columns"/>
+</constraint>
+<constraint name="fk_resultadoexamen_ciclo" type="fk-constr"	 comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.tb_ciclo" table="public.tb_resultadoexamen">
+	<columns names="tb_ciclo_cod" ref-type="src-columns"/>
+	<columns names="tb_ciclo_cod" ref-type="dst-columns"/>
+</constraint>
+<relationship name="rel_tb_opcionmenu_tb_opcionmenu" type="relfk"
+	 src-table="public.tb_opcionmenu"
+	 dst-table="public.tb_opcionmenu"
+	 src-required="true" dst-required="true">
+	<line>
+		<position x="1629" y="81.4267"/>
+	<position x="1629" y="31.6667"/>
+	<position x="1501.67" y="31.6667"/>
+	</line>
+</relationship>
+
+<relationship name="rel_tb_acceso_tb_opcionmenu" type="relfk"
+	 src-table="public.tb_acceso"
+	 dst-table="public.tb_opcionmenu"
+	 src-required="true" dst-required="true"/>
+
+<relationship name="rel_tb_acceso_tb_tipousuario" type="relfk"
+	 src-table="public.tb_acceso"
+	 dst-table="public.tb_tipousuario"
+	 src-required="true" dst-required="true"/>
+
+<relationship name="rel_tb_usuario_tb_tipousuario" type="relfk"
+	 src-table="public.tb_usuario"
+	 dst-table="public.tb_tipousuario"
+	 src-required="true" dst-required="true"/>
+
+<relationship name="rel_tb_usuario_tb_local" type="relfk"
+	 src-table="public.tb_usuario"
+	 dst-table="public.tb_local"
+	 src-required="true" dst-required="true"/>
+
+<relationship name="rel_tb_bitacora_tb_usuario" type="relfk"
+	 src-table="public.tb_bitacora"
+	 dst-table="public.tb_usuario"
+	 src-required="true" dst-required="true"/>
+
+<relationship name="rel_tb_escuela_tb_grupo" type="relfk"
+	 src-table="public.tb_escuela"
+	 dst-table="public.tb_grupo"
+	 src-required="true" dst-required="true"/>
+
+<relationship name="rel_tb_aula_tb_local" type="relfk"
+	 src-table="public.tb_aula"
+	 dst-table="public.tb_local"
+	 src-required="true" dst-required="true"/>
+
+<relationship name="rel_tb_aulaturno_tb_turno" type="relfk"
+	 src-table="public.tb_aulaturno"
+	 dst-table="public.tb_turno"
+	 src-required="true" dst-required="true"/>
+
+<relationship name="rel_tb_aulaturno_tb_aula" type="relfk"
+	 src-table="public.tb_aulaturno"
+	 dst-table="public.tb_aula"
+	 src-required="true" dst-required="true"/>
+
+<relationship name="rel_tb_aulaturno_tb_nivel" type="relfk"
+	 src-table="public.tb_aulaturno"
+	 dst-table="public.tb_nivel"
+	 src-required="true" dst-required="true"/>
+
+<relationship name="rel_tb_aulaturno_tb_grupo" type="relfk"
+	 src-table="public.tb_aulaturno"
+	 dst-table="public.tb_grupo"
+	 src-required="true" dst-required="true"/>
+
+<relationship name="rel_tb_observacion_tb_alumno" type="relfk"
+	 src-table="public.tb_observacion"
+	 dst-table="public.tb_alumno"
+	 src-required="true" dst-required="true"/>
+
+<relationship name="rel_tb_observacion_tb_ciclo" type="relfk"
+	 src-table="public.tb_observacion"
+	 dst-table="public.tb_ciclo"
+	 src-required="true" dst-required="true"/>
+
+<relationship name="rel_tb_matricula_tb_ciclo" type="relfk"
+	 src-table="public.tb_matricula"
+	 dst-table="public.tb_ciclo"
+	 src-required="true" dst-required="true"/>
+
+<relationship name="rel_tb_matricula_tb_alumno" type="relfk"
+	 src-table="public.tb_matricula"
+	 dst-table="public.tb_alumno"
+	 src-required="true" dst-required="true"/>
+
+<relationship name="rel_tb_matricula_tb_local" type="relfk"
+	 src-table="public.tb_matricula"
+	 dst-table="public.tb_local"
+	 src-required="true" dst-required="true">
+	<label ref-type="name-label">
+		<position x="11.2257" y="78.6849"/>
+	</label>
+</relationship>
+
+<relationship name="rel_tb_pago_tb_matricula" type="relfk"
+	 src-table="public.tb_pago"
+	 dst-table="public.tb_matricula"
+	 src-required="true" dst-required="true"/>
+
+<relationship name="rel_tb_asistencia_tb_matricula" type="relfk"
+	 src-table="public.tb_asistencia"
+	 dst-table="public.tb_matricula"
+	 src-required="true" dst-required="true"/>
+
+<relationship name="rel_tb_simulacro_tb_ciclo" type="relfk"
+	 src-table="public.tb_simulacro"
+	 dst-table="public.tb_ciclo"
+	 src-required="true" dst-required="true"/>
+
+<relationship name="rel_tb_historialalumno_tb_matricula" type="relfk"
+	 src-table="public.tb_historialalumno"
+	 dst-table="public.tb_matricula"
+	 src-required="true" dst-required="true"/>
+
+<relationship name="rel_tb_historialalumno_tb_simulacro" type="relfk"
+	 src-table="public.tb_historialalumno"
+	 dst-table="public.tb_simulacro"
+	 src-required="true" dst-required="true"/>
+
+<relationship name="rel_tb_historialalumno_tb_aulaturno" type="relfk"
+	 src-table="public.tb_historialalumno"
+	 dst-table="public.tb_aulaturno"
+	 src-required="true" dst-required="true"/>
+
+<relationship name="rel_tb_resultadoexamen_tb_escuela" type="relfk"
+	 src-table="public.tb_resultadoexamen"
+	 dst-table="public.tb_escuela"
+	 src-required="true" dst-required="true"/>
+
+<relationship name="rel_tb_resultadoexamen_tb_ciclo" type="relfk"
+	 src-table="public.tb_resultadoexamen"
+	 dst-table="public.tb_ciclo"
+	 src-required="true" dst-required="true"/>
+
+</dbmodel>
