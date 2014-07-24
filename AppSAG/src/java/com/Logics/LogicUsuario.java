@@ -6,26 +6,12 @@
 
 package com.Logics;
 
-import com.Beans.BeanUsuario;
-import com.DAO.DAOUsuario;
+import com.commons.ValidacionAcceso;
 
 /**
  *
  * @author Usuario
  */
 public class LogicUsuario{
-    public Object logIn(String usuario,String password)throws Exception{
-        DAOUsuario dAOUsuario=new DAOUsuario();
-        try {
-            
-            Object object=dAOUsuario.logIn(usuario, password);
-            
-            return object;
-        } catch (Exception e) {
-            throw e;
-        }
-        finally{
-            dAOUsuario.close();
-        }
-    }
+    
 }

@@ -106,7 +106,7 @@ public class DAO {
     }
 
     
-    public void close()throws Exception{
+    protected void close()throws Exception{
         try {
             if(cnx!=null){
                 if(!cnx.isClosed()){

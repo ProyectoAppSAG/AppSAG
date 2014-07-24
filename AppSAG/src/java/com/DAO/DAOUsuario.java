@@ -56,15 +56,14 @@ public class DAOUsuario extends DAO {
                 }
 
             }
-            else{
-                object="0";
-            }
 
             return object;
 
         } catch (Exception e) {
             throw e;
-        } 
+        } finally {
+            this.close();
+        }
     }
 
     public List<BeanOpcionMenu> listaOpcionesMenu(BeanTipoUsuario beanTipoUsuario) throws Exception {
