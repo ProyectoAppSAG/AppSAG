@@ -1,6 +1,6 @@
 <%-- 
-    Document   : index
-    Created on : 23/07/2014, 10:48:22 PM
+    Document   : ciclos.jsp
+    Created on : 24/07/2014, 03:20:19 AM
     Author     : Usuario
 --%>
 
@@ -13,6 +13,5 @@
     </head>
     <body>
         <h1>Hello World!</h1>
-        <a href="login.jsp">LogIn</a>
     </body>
 </html>

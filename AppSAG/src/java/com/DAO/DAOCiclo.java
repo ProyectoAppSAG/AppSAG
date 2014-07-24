@@ -16,7 +16,7 @@ public class DAOCiclo extends DAO{
         super();
     }
     
-    public List<BeanCiclo> listarCiclo(String codigo,Date fecha)throws Exception{
+    public List<BeanCiclo> listarCiclos(String codigo,Date fecha)throws Exception{
         List<BeanCiclo> lista =new ArrayList<BeanCiclo>();
         try {
             String sql="select * from consulta_ciclo(?,?);";
@@ -38,9 +38,6 @@ public class DAOCiclo extends DAO{
             return lista;
         } catch (SQLException e) {
            throw e;
-        }
-        finally{
-            this.close();
         }
     }
 //    public  boolean iudCiclo(BeanCiclo oCiclo){
